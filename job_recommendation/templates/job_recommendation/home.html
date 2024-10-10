@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Welcome to Job Recommendation System</h2>
+  <nav>
+    <ul>
+      <li><a href="{% url 'create_user_profile' %}">Create User Profile</a></li>
+      <li><a href="{% url 'all_job_postings' %}">View All Job Postings</a></li>
+      <li><a href="{% url 'create_job_posting' %}">Create New Job Posting</a></li>
+    </ul>
+  </nav>
+{% endblock %}

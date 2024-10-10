@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>All Job Postings</h2>
+  <a href="{% url 'create_job_posting' %}">Create New Job Posting</a>
+  <ul>
+    {% for job in jobs %}
+      <li>
+        <h3>{{ job.job_title }} at {{ job.company }}</h3>
+        <p>Location: {{ job.location }}</p>
+        <p>Job Type: {{ job.job_type }}</p>
+        <p>Experience Level: {{ job.experience_level }}</p>
+        <p>Required Skills: {{ job.required_skills|join:", " }}</p>
+        <a href="{% url 'update_job_posting' job.job_id %}">Update</a>
+        <a href="{% url 'delete_job_posting' job.job_id %}">Delete</a>
+      </li>
+    {% empty %}
+      <li>No job postings found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

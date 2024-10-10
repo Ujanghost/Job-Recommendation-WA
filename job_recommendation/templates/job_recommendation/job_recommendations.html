@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Job Recommendations for {{ user_profile.name }}</h2>
+  <ul>
+    {% for job in jobs %}
+      <li>
+        <h3>{{ job.job_title }} at {{ job.company }}</h3>
+        <p>Match Score: {{ job.match_score|floatformat:2 }}%</p>
+        <p>Location: {{ job.location }}</p>
+        <p>Job Type: {{ job.job_type }}</p>
+        <p>Experience Level: {{ job.experience_level }}</p>
+        <p>Required Skills: {{ job.required_skills|join:", " }}</p>
+      </li>
+    {% empty %}
+      <li>No job recommendations found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
